@@ -15,15 +15,17 @@ model User {
   role      Role     @default(USER)
   createdAt DateTime @default(now())
 
-  orders    Order[]   // 🔥 RELASI TAMBAHAN (WAJIB)
+  orders Order[] // 🔥 RELASI TAMBAHAN (WAJIB)
 }
 
 model Product {
-  id        Int      @id @default(autoincrement())
-  name      String
-  price     Float
-  stock     Int
-  createdAt DateTime @default(now())
+  id         Int         @id @default(autoincrement())
+  name       String
+  price      Float
+  stock      Int
+  image String?
+  createdAt  DateTime    @default(now())
+  orderItems OrderItem[]
 }
 
 model Order {
@@ -33,10 +35,28 @@ model Order {
   status    String
   createdAt DateTime @default(now())
 
-  user      User     @relation(fields: [userId], references: [id])
+  user       User        @relation(fields: [userId], references: [id])
+  orderItems OrderItem[]
+}
+
+model OrderItem {
+  id        Int @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROSES
+  SELESAI
+  BATAL
 }
