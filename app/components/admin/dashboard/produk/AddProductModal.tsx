@@ -102,12 +102,12 @@ const handleSubmit = async (e: FormEvent) => {
               value={formData.category}
               onChange={(e) => setFormData({...formData, category: e.target.value})}
             >
-              <option value="Tanaman Indoor">Tas Pria</option>
-              <option value="Pot & Media Tanam">Tas Wanita</option>
-              <option value="Suplemen Nutrisi">Backpack</option>
-              <option value="Suplemen Nutrisi">Pouch</option>
-              <option value="Suplemen Nutrisi">Wallet</option>
-              <option value="Suplemen Nutrisi">Asesoris</option>
+              <option value="Tas Priar">Tas Pria</option>
+              <option value="Tas Wanita">Tas Wanita</option>
+              <option value="Backpack">Backpack</option>
+              <option value="Pouch">Pouch</option>
+              <option value="Wallet">Wallet</option>
+              <option value="Asesoris">Asesoris</option>
             </select>
 
             <div className="grid grid-cols-2 gap-4">
